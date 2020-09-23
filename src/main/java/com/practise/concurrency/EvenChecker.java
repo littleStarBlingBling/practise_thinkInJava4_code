@@ -36,7 +36,8 @@ public class EvenChecker implements Runnable {
 		executorService.shutdown();
 	}
 
+	// 默认的测试方法
 	public static void test(IntGenerator intGenerator) {
-		test(intGenerator, 5);
+		test(intGenerator, 20);
 	}
 }

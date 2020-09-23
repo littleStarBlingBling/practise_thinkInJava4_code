@@ -5,7 +5,10 @@ public class EvenGenerator extends IntGenerator{
 
 	@Override
 	public int next() {
+		// ++ 操作并不是元子操作
 		++currentEvenValue;
+		// 用yield()方法更快地发现失败
+//		Thread.yield();
 		++currentEvenValue;
 		return currentEvenValue;
 	}

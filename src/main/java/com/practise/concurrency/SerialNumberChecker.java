@@ -20,6 +20,7 @@ class CircularSet {
 
 	public synchronized void add(int i) {
 		array[index] = i;
+		// index 在[0, len-1]区间内
 		index = ++index % len;
 	}
 
@@ -37,6 +38,7 @@ public class SerialNumberChecker {
 	private static CircularSet serials = new CircularSet(1000);
 	private static ExecutorService executorService = Executors.newCachedThreadPool();
 
+	// 检测生成序列数的唯一性
 	static class SerialChecker implements Runnable {
 		@Override
 		public void run() {
@@ -55,11 +57,10 @@ public class SerialNumberChecker {
 	public static void main(String[] args) throws Exception {
 		for (int i = 0; i < SIZE; i++) {
 			executorService.execute(new SerialChecker());
-			if(args.length > 0){
-				TimeUnit.SECONDS.sleep(Integer.valueOf(args[0]));
-				System.out.println("No duplicates detected");
-				System.exit(0);
-			}
 		}
+
+		TimeUnit.SECONDS.sleep(4);
+		System.out.println("No duplicates detected");
+		System.exit(0);
 	}
 }

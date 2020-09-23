@@ -4,7 +4,7 @@ public class SynchronizedEvenGenerator extends IntGenerator{
 	private int currentEventValue = 0;
 
 	@Override
-	public int next() {
+	public synchronized int next() {
 		++currentEventValue;
 		Thread.yield();
 		++currentEventValue;

@@ -3,6 +3,7 @@ package com.practise.concurrency;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+// 同步整个方法
 class ExplicitPairManager1 extends PairManager {
 	private Lock lock = new ReentrantLock();
 
@@ -20,6 +21,7 @@ class ExplicitPairManager1 extends PairManager {
 	}
 }
 
+// 使用临界区
 class ExplicitPairManager2 extends PairManager {
 
 	private Lock lock = new ReentrantLock();

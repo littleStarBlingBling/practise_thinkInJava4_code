@@ -95,7 +95,7 @@ class PairManager1 extends PairManager {
 	}
 }
 
-// 使用同步控制块
+// 使用同步控制块，没有加锁耗时的操作
 class PairManager2 extends PairManager {
 	@Override
 	public void increment() {
@@ -131,7 +131,7 @@ class PairManipulator implements Runnable {
 	}
 }
 
-// 另一个任务在获取到pairManager时递增checkCounter
+// 另一个任务在获取到 pairManager 时递增 checkCounter
 class PairChecker implements Runnable {
 
 	private PairManager pairManager;
@@ -181,8 +181,8 @@ public class CriticalSection {
 
 	public static void main(String[] args) {
 		PairManager
-				pm1 = new PairManager1(),
-				pm2 = new PairManager2();
+				pm1 = new PairManager1(), // 同步整个方法
+				pm2 = new PairManager2(); // 同步控制块
 
 		testApproaches(pm1, pm2);
 	}

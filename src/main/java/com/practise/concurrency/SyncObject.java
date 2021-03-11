@@ -3,6 +3,7 @@ package com.practise.concurrency;
 class DualSynch {
 	private Object syncObject = new Object();
 
+	// 在 this 上同步
 	public synchronized void f() {
 		for (int i = 0; i < 5; i++) {
 			System.out.println("f()");
@@ -10,6 +11,7 @@ class DualSynch {
 		}
 	}
 
+	// 在 syncObject 上同步
 	public void g() {
 		synchronized (syncObject) {
 			for (int i = 0; i < 5; i++) {
@@ -23,7 +25,7 @@ class DualSynch {
 public class SyncObject {
 	public static void main(String[] args) {
 		final DualSynch dualSynch = new DualSynch();
-		new Thread() {
+		new Thread(){
 			@Override
 			public void run() {
 				dualSynch.f();

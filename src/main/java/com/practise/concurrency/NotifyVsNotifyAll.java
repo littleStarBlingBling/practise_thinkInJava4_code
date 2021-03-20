@@ -11,7 +11,7 @@ class Blocker{
         try{
             while (!Thread.interrupted()){
                 wait();
-                System.out.println(Thread.currentThread() + " ");
+                System.out.println(Thread.currentThread());
             }
         }catch (InterruptedException e){
 
@@ -62,7 +62,7 @@ public class NotifyVsNotifyAll {
             public void run() {
                if(prod){
                    System.out.println("\nnofity() ");
-                   Task.blocker.prod();
+                   Task2.blocker.prod();
                    prod = false;
                }else {
                    System.out.println("\nnotifyAll()");
@@ -72,10 +72,11 @@ public class NotifyVsNotifyAll {
             }
         }, 400, 400);
 
-        TimeUnit.SECONDS.sleep(2);
+        TimeUnit.SECONDS.sleep(3);
         timer.cancel();
         System.out.println("\nTimer canceled");
         TimeUnit.MILLISECONDS.sleep(500);
+        exec.shutdownNow();
         System.out.println("\nShutting down");
     }
 }

@@ -77,7 +77,7 @@ class Chef implements Runnable {
 
                 TimeUnit.MILLISECONDS.sleep(100);
             }
-        }catch (InterruptedException e){
+        } catch (InterruptedException e) {
             System.out.println("Chef interrupted");
         }
 

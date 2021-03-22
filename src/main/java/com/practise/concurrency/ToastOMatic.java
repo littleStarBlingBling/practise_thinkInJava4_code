@@ -78,6 +78,7 @@ class Butterer implements Runnable {
     @Override
     public void run() {
         try {
+            // 从 dryQueue 队列里取出吐司，修改状态后，放入 butteredQueue 中，来模拟涂黄油的过程
             while (!Thread.interrupted()) {
                 Toast toast = dryQueue.take();
                 toast.butter();

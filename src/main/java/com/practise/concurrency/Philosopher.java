@@ -32,10 +32,12 @@ public class Philosopher implements Runnable{
             while (!Thread.interrupted()){
                 System.out.println(this + " " + "thinking");
                 pause();
-                System.out.println(this + " " + "grabbing right");
+                System.out.println(this + " " + "is waiting for right " + right);
                 right.take();
-                System.out.println(this + " " + "grabbing left");
+                System.out.println(this + " " + "get right " + right);
+                System.out.println(this + " " + "is waiting for left " + left);
                 left.take();
+                System.out.println(this + " " + "get left " + left);
                 System.out.println(this + " " + "eating");
                 pause();
                 right.drop();
@@ -48,6 +50,6 @@ public class Philosopher implements Runnable{
 
     @Override
     public String toString() {
-        return "Philosopher " + id;
+        return "Philosopher " + id + "(" + left + "," + right + ")";
     }
 }

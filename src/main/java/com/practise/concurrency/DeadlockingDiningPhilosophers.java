@@ -11,11 +11,11 @@ public class DeadlockingDiningPhilosophers {
 
         ExecutorService exec = Executors.newCachedThreadPool();
 
-        // 一共五根筷子，通过数组的索引来标识
+        // 一共五根筷子
         int size = 5;
         Chopstick[] sticks = new Chopstick[size];
         for (int i = 0; i < size; i++) {
-            sticks[i] = new Chopstick();
+            sticks[i] = new Chopstick(i);
         }
 
         for (int i = 0; i < size; i++) {

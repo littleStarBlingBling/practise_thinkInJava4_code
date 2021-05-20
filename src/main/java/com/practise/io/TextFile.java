@@ -1,4 +1,6 @@
-package com.practise.strings;
+package com.practise.io;
+
+import com.practise.utils.ConstUtils;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -55,7 +57,7 @@ public class TextFile extends ArrayList<String> {
         try {
             PrintWriter out = new PrintWriter(new File(fileName).getAbsoluteFile());
             try {
-                // 遍历
+                // 遍历列表中存的数据，进行输出
                 for (String item : this) {
                     out.println(item);
                 }
@@ -68,18 +70,17 @@ public class TextFile extends ArrayList<String> {
     }
 
     public static void main(String[] args) {
-        String prefix = "src/main/java/com/practise/strings/";
 
         // 读取 TextFile.java 的内容并写入到 test.txt 中
-        String file = read(prefix + "TextFile.java");
-        write(prefix + "test.txt", file);
+        String file = read(ConstUtils.IO_PREFIX + "TextFile.java");
+        write(ConstUtils.OUT_PREFIX + "test.txt", file);
 
         // 把 test.txt 的内容写入到 test2.txt 中
-        TextFile textFile = new TextFile(prefix + "test.txt");
-        textFile.write(prefix + "test2.txt");
+        TextFile textFile = new TextFile(ConstUtils.OUT_PREFIX + "test.txt");
+        textFile.write(ConstUtils.OUT_PREFIX + "test2.txt");
 
-        // 把 TextFile.java 中的内容，用表示非单词的正则分隔，然后打印出
-        TreeSet<String> words = new TreeSet<>(new TextFile(prefix + "TextFile.java", "\\W+"));
+        // 把 TextFile.java 中的内容，用表示非单词的正则分隔，然后打印出 TreeSet 中单词 a 之前的内容
+        TreeSet<String> words = new TreeSet<>(new TextFile(ConstUtils.IO_PREFIX + "TextFile.java", "\\W+"));
         System.out.println(words.headSet("a"));
 
     }

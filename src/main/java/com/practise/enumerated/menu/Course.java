@@ -1,6 +1,8 @@
 package com.practise.enumerated.menu;
 
+import com.practise.utils.EnumUtils;
 
+// 枚举 - 接口 - 枚举
 public enum  Course {
     APPETIZER(Food.Appetizer.class),
     MAINCOURSE(Food.MainCourse.class),
@@ -10,12 +12,12 @@ public enum  Course {
     private Food[] values;
 
     private Course(Class<? extends Food> kind){
-        // 通过class对象来拿到所有的enum实例
+        // 通过 class 对象来拿到一个 Food 子类中所有的 enum 实例
         values = kind.getEnumConstants();
     }
 
-//    public Food randomSelection(){
-//        return Enums.random(values);
-//    }
+    public Food randomSelection(){
+        return EnumUtils.random(values);
+    }
 
 }

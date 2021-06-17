@@ -1,7 +1,6 @@
 package com.practise.annotations;
 
-
-import com.practise.annotations.atunit.Test;
+import com.practise.annotations.atunit.test.Test;
 
 public class Testable {
 	public void execute() {

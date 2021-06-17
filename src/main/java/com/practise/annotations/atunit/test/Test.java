@@ -1,4 +1,4 @@
-package com.practise.annotations.atunit;
+package com.practise.annotations.atunit.test;
 
 import java.lang.annotation.*;
 

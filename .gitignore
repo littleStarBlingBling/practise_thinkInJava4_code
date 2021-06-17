@@ -4,3 +4,4 @@ target
 *.xml
 *.iml
 out/
+*.DS_Store
